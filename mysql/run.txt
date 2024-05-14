@@ -1,0 +1,4 @@
+docker compose exec db mysql -uadmin -p
+
+docker compose exec db mysql -u root -p
+

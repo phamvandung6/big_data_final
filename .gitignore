@@ -1,0 +1,7 @@
+.venv/
+path/
+test_my_stream/
+cassandra/
+airfow/
+trash/
+mysql/mysql-data

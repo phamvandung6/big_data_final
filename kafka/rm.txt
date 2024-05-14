@@ -1,0 +1,43 @@
+zookeeper:
+
+Dịch vụ Zookeeper sử dụng image confluentinc/cp-zookeeper:7.6.0.
+Container này chạy một Zookeeper node để quản lý cụm Kafka.
+Zookeeper lắng nghe trên cổng 2181 để các broker Kafka có thể kết nối.
+broker:
+
+Dịch vụ Kafka Broker sử dụng image confluentinc/cp-server:7.6.0.
+Container này chạy một Kafka broker.
+Broker này phụ thuộc vào dịch vụ Zookeeper để có thể khởi chạy.
+Kafka broker lắng nghe trên cổng 9092 (nội bộ) và 9101 (cho JMX) và cung cấp các cài đặt như broker ID, Zookeeper connect string, advertised listeners, etc.
+schema-registry:
+
+Dịch vụ Schema Registry sử dụng image confluentinc/cp-schema-registry:7.6.0.
+Container này cung cấp một Registry để quản lý schema của dữ liệu trong Kafka.
+Schema Registry phụ thuộc vào dịch vụ broker để có thể khởi chạy.
+connect:
+
+Dịch vụ Kafka Connect sử dụng image cnfldemos/cp-server-connect-datagen:0.6.4-7.6.0.
+Container này chạy một Kafka Connect worker, cho phép liên kết dữ liệu giữa Kafka và các hệ thống lưu trữ khác.
+Kafka Connect phụ thuộc vào dịch vụ broker và schema-registry để có thể khởi chạy.
+control-center:
+
+Dịch vụ Control Center sử dụng image confluentinc/cp-enterprise-control-center:7.6.0.
+Container này cung cấp giao diện quản lý trực quan cho Confluent Platform.
+Control Center phụ thuộc vào dịch vụ broker, schema-registry, connect và ksqldb-server để có thể khởi chạy.
+ksqldb-server:
+
+Dịch vụ KSQLDB Server sử dụng image confluentinc/cp-ksqldb-server:7.6.0.
+Container này chạy một KSQLDB server, cung cấp SQL interface cho Kafka.
+KSQLDB server phụ thuộc vào dịch vụ broker và connect để có thể khởi chạy.
+ksqldb-cli:
+
+Dịch vụ KSQLDB CLI sử dụng image confluentinc/cp-ksqldb-cli:7.6.0.
+Container này cung cấp một CLI cho KSQLDB, cho phép tương tác với KSQLDB Server từ dòng lệnh.
+ksql-datagen:
+
+Dịch vụ KSQLDB Data Generator sử dụng image confluentinc/ksqldb-examples:7.6.0.
+Container này tạo dữ liệu giả lập để sử dụng trong KSQLDB.
+rest-proxy:
+
+Dịch vụ Kafka REST Proxy sử dụng image confluentinc/cp-kafka-rest:7.6.0.
+REST Proxy cung cấp một RESTful interface cho Kafka, cho phép gửi và nhận các tin nhắn từ Kafka qua HTTP.

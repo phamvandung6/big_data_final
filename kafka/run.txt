@@ -1,0 +1,14 @@
+docker exec -it broker /bin/bash
+
+kafka-topics --create --topic sampletopic --bootstrap-server localhost:9092
+
+kafka-console-producer --topic shopping_topic --bootstrap-server localhost:9092
+
+kafka-console-consumer --topic sampletopic --from-beginning --bootstrap-server localhost:9092
+
+kafka-console-consumer --topic shopping_topic --bootstrap-server localhost:9092
+
+	
+- Hiển thị tất cả topics:
+    kafka-topics --bootstrap-server localhost:9092 --list
+
